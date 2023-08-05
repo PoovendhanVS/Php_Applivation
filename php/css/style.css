@@ -1,0 +1,46 @@
+
+a{
+    text-decoration: none;
+}
+
+nav{
+    background-color: #5E7BC2;
+    color: #fff;
+}
+
+.navbar-brand{
+    color: #fff;
+}
+.navbar-brand:hover{
+    color: #E6F4F1;
+    text-decoration: underline;
+}
+
+.nav-link{
+    color: #fff;
+}
+
+.nav-link:hover{
+    color: #00AAE4;
+}
+
+.span-tl:hover{
+    color: #00AAE4;
+}
+tfoot input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+.button-look-edit:hover{
+    color: #fff;
+    width: auto;
+    opacity: 0.7;
+}
+
+.button-look-del:hover{
+    color: #fff;
+    width: auto;
+    opacity: 0.7;
+}

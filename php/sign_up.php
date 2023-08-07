@@ -5,12 +5,29 @@
 <head>
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Acme&family=Patua+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/sign_up_style.css">
   <style>
   </style>
 </head>
 
 <body>
+<?php
+  // session_start();
+
+  // if (isset($_SESSION['username'])) {
+  //   $name = $_SESSION['username'];
+  // } else {
+  //   header('Location: index.php');
+  //   exit;
+  // }
+  ?>
+  <div class="container">
+  <center>
+      <h1 class="heading" style="color: #4286f4;font-family: 'Acme', sans-serif; font-family: 'Patua One', cursive;">SIGN UP</h1>
+    </center>
   <form id="signupForm" action="" method="POST"  onsubmit="validateForm(event)" autocomplete="off">
     <div class="formcontainer">
       <div class="container">
@@ -21,10 +38,11 @@
         <label for="psw"><strong>Password</strong></label>
         <input type="password" placeholder="Enter Password" name="psw" id="user_pwd" value="">
       </div>
-      <button type="submit" name="signup"><strong>SIGN UP</strong></button>
+      <button type="submit" name="signup"><strong>CREATE</strong></button>
     </div>
     <p class="signin-link" style="display: block;"><span>Already have an account? </span><a href="index.php">Sign In</a></p>
   </form>
+  </div>
 
   <?php
 
@@ -42,10 +60,15 @@ if (isset($_POST['signup'])) {
     $sql = "INSERT INTO sign_up (User_Name, Email_ID, Password) VALUES ('$name', '$email', '$pwd')";
 
     if ($conn->query($sql) === TRUE) {
-        header('location: index.php');
-       
+      session_start();
+      if (isset($_SESSION['username'])) {
+        header('location: users_list.php');
+      } else {
+        header('Location: index.php');
+        exit;
+      }
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql . "<br>" . $conn->error();
     }
 
     $conn->close();

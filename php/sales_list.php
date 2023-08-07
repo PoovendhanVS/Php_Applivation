@@ -38,7 +38,7 @@
   <div class="container-fluid mt-5">
     <center>
       <a href="sales_entry.php"><button class="btn btn-success" style="float:right">Add</button></a>
-      <h3>USER LISTS</h3>
+      <h3>SALES ENTRY LISTS</h3>
     </center>
     <?php
     include 'sales_list_link.php';

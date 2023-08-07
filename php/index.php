@@ -91,26 +91,9 @@
   }
 
   ?>
+  
+  
   <!-- PHP Scripting end-tag -->
 </body>
 
 </html>
-
-
-<script>
-  
-function callPHPFunction(1) {
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        document.getElementById("result").innerHTML = xhr.responseText;
-                    } else {
-                        console.error('Error:', xhr.status);
-                    }
-                }
-            };
-            xhr.open('GET', 'your_php_file.php?button=' + button, true);
-            xhr.send();
-        }
-  </script>

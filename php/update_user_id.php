@@ -92,6 +92,15 @@ span.psw {
 <body>
 
   <?php
+  session_start();
+
+  if (isset($_SESSION['username'])) {
+      $name = $_SESSION['username'];
+  } else {
+      header('Location: index.php');
+      exit;
+  }
+
   include 'connect.php'; 
   $uid = $_GET['id'];
   $sql = "SELECT * FROM sign_up WHERE id='" . $uid . "'";
@@ -104,7 +113,7 @@ span.psw {
   <?php 
   include 'html/nav-bar.html'; ?>
 
-<form id="signupForm" action="<?php echo 'update_id_sign_up.php?id=' . $row['id']; ?>" method="POST" onsubmit="validateForm(event)" autocomplete="off">
+<form id="signupForm" action="<?php echo 'change_user.php?id=' . $singleRow['id']; ?>" method="POST" onsubmit="validateForm(event)" autocomplete="off">
 
     <div class="formcontainer">
       <div class="container">

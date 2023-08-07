@@ -56,14 +56,10 @@ function disableSelect(selectElement) {
         var rate = document.getElementById('item_rate').value;
         var qty = document.getElementById('item_qty').value;
         var tol = document.getElementById('total').value;
-        var csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
       
         $.ajax({
-          url: '/update_dte/',
+          url: 'sales_entry_update_bill.php',
           type: 'POST',
-          headers: {
-            'X-CSRFToken': csrfToken
-          },
           data: {
             'invoice_id':invoice_id,
             'my_id': my_id,
@@ -72,11 +68,10 @@ function disableSelect(selectElement) {
             'rate': rate,
             'qty': qty,
             'tol': tol,
-            'csrfmiddlewaretoken': csrfToken // Include the CSRF token in the request data
           },
           success: function(response) {
             if (response) {
-                $('#table-body').html(response);
+                $('#table-body').html(response.table_rows);
                 console.log('Success Updated Table') // Call the getTableData function to reload the table data
       
               // Clear the input fields
@@ -100,13 +95,12 @@ function disableSelect(selectElement) {
       
 
 function UpdateItem(id){
-    alert(id);
     document.getElementById('addButton').style.display = 'none';
     document.getElementById('editButton').style.display = 'block';
     var my_id = id;
     $.ajax({
-        url: '/update_sales_dte/',
-        type: 'GET',
+        url: 'sales_entry_edit_bill.php',
+        type: 'POST',
         data: {
             'my_id': my_id
         },

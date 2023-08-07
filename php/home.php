@@ -8,28 +8,29 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        crossorigin="anonymous" />
 </head>
 
 <style>
 </style>
 
 <body>
-    <?php 
-session_start();
+    <?php
+    session_start();
 
-// Make sure the session has started and the username is set before using it.
-if (isset($_SESSION['username'])) {
-    $name = $_SESSION['username'];
-} else {
-    // Redirect the user to the login page if the username is not set.
-    header('Location: index.php');
-    exit;
-}
-?>
+    if (isset($_SESSION['username'])) {
+        $name = $_SESSION['username'];
+    } else {
+        header('Location: index.php');
+        exit;
+    }
+    ?>
     <?php include 'html/nav-bar.html'; ?>
     <div class="container-fluid text-center">
-        <h1>User Name: <span style="color:red;"> <?php echo $name; ?> </span></h1>
+        <h1>User Name: <span style="color:red;">
+                <?php echo $name; ?>
+            </span></h1>
     </div>
 
 

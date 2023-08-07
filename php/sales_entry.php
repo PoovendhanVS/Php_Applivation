@@ -89,7 +89,7 @@ function invoice_num($pad_len = 3, $prefix = null) {
 $invoice_id = invoice_num(3, "SAI-");
 
 ?>
-<form id="myForm" action="" method="POST" enctype="multipart/form-data" autocomplete="off">
+<form id="myForm" action="sales_entry_submit.php" method="POST" enctype="multipart/form-data" autocomplete="off">
         <div class="container-fluid">
             <div class="main-form">
                 <h4 class="sub_title" style="color: dodgerblue; text-align:center; text-decoration:underline;">SALES ENTRY</h4>
@@ -280,7 +280,7 @@ $invoice_id = invoice_num(3, "SAI-");
                 </tbody>
             </table>
             <p></p>
-            <button class="btn btn-primary" style="margin-left:1% ;float: right;width:100px;" onclick="onSubmisstion(event)">Submit</button>
+            <button class="btn btn-primary" style="margin-left:1% ;float: right;width:100px;" name="submit" onclick="onSubmisstion(event)">Submit</button>
         <a href="/sales_home" type="button" class="btn btn-info" style="float:right; width:100px;">Cancel</a>
     </div>
 </form>

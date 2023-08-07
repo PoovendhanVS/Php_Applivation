@@ -1,12 +1,12 @@
 <?php
 
 include 'connect.php';
-$sql = "SELECT * FROM item_creation";
+$sql = "SELECT * FROM sales_order";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   // Start the table structure outside the loop
-  echo "<table id='example' class='table table-striped mdl-data-tabl row-border' style='width:100%'>
+  echo "<table id='example' class='table table-striped mdl-data-tabl row-border' style='width:100%; font-size:14px;'>
         <thead>
             <tr>
                 <th>ID</th>
@@ -27,8 +27,8 @@ if ($result->num_rows > 0) {
     <td>" . $count . "</td>
     <td>" . $row['Item_Type'] . "</td>
     <td>" . $row['Item_Code'] . "</td>
-    <td>" . $row['Price'] . "</td>
-    <td>" . $row['Description'] . "</td>
+    <td>" . $row['Item_Rate'] . "</td>
+    <td>" . $row['Total'] . "</td>
     <td style='width:200px'><a class='button-look-edit' title='edit' href='item_creation_update.php?id=" . $row['id'] . "'><img src='img/edit.png' width='20px'></a>
     <a class='button-look-del' title='delete'  onclick='confirmDelete($last_id)' ><img src='img/delete.png' width='20px'></a></td>
     </tr>";

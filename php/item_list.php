@@ -38,7 +38,7 @@
   <div class="container-fluid mt-5">
     <center>
       <a href="item_creation.php"><button class="btn btn-success" style="float:right">Add</button></a>
-      <h3>USER LISTS</h3>
+      <h3>ITEM LISTS</h3>
     </center>
     <?php
     include 'item_list_link.php';

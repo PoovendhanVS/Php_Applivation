@@ -1,37 +1,16 @@
 <?php 
-include 'connect.php';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = $_POST['name_id'];
-    $invoice_id = $_POST['invoice'];
-    $bill_date = $_POST['bill_date'];
-    $itemType = $_POST['item_type'];
-    $itemCode = $_POST['item_code'];
-    $itemRate = $_POST['item_rate'];
-    $itemQty = $_POST['item_qty'];
-    $total = $_POST['total'];
-
-    
-    $sql = "INSERT INTO sales_order 
-    (
-    Invoice_Number, 
-    Bill_Date, 
-    Item_Type,  
-    Item_Code, 
-    Item_Rate, 
-    Quantity, 
-    Total,
-    Name_ID) VALUES
-    ('$invoice_id',  
-    '$bill_date',
-    '$itemType',
-    '$itemCode',
-    '$itemRate',
-    '$itemQty',
-    '$total',
-    '$name')";
-
+    $invoice_id = $_POST['invoice_id'];
+    $my_id = $_POST['my_id'];
+    $type = $_POST['type'];
+    $code = $_POST['code'];
+    $rate = $_POST['rate'];
+    $qty = $_POST['qty'];
+    $tol = $_POST['tol'];
+    include 'connect.php';
+    $sql = "UPDATE sales_order SET Item_Type = '$type',  Item_Code = '$code',  Item_Rate =  '$rate', Quantity = '$qty',  Total = '$tol' WHERE id = '$my_id'";
     $result = $conn->query($sql);
+        
     if ($result) {
         // $table_rows = 'Bill details ceated successfully!!';
         $count = 1;
@@ -68,23 +47,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // For example, display a message that no data is available.
             $table_rows = "<tr><td colspan='8'>No data available.</td></tr>";
         }
-
-    } else {
-        echo "<script rel='jsavascript'>";
-        echo "alert('Error Found!' )";
-        echo "</script>";
     }
 
-
-    
-    // Do whatever you need to do with the data and prepare the response
     $response = [
-        'table_rows' => $table_rows, // Include the table rows in the response
+        'table_rows' => $table_rows, 
     ];
 
     header('Content-Type: application/json'); // Ensure correct Content-Type header
     echo json_encode($response);
-} else {
+
+}
+else {
     // Handle the case when the request method is not POST
     $response = [
         'error' => 'Invalid request method',
@@ -93,4 +66,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Content-Type: application/json'); // Ensure correct Content-Type header
     echo json_encode($response);
 }
+
 ?>

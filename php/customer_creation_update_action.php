@@ -30,15 +30,6 @@ if (isset($_POST['submit'])) {
     $filename = $_FILES["photo"]["name"];
     $tempname = $_FILES["photo"]["tmp_name"];
     $folder = "./img/" . $filename;
-    if (move_uploaded_file($tempname, $folder)) {
-
-        $msg =  "Image uploaded successfully";
-
-    }else{
-
-        $msg =  "Failed to upload image";
-
-}
 
     $country = $_POST['country'];
     $state = $_POST['state'];
@@ -59,35 +50,71 @@ if (isset($_POST['submit'])) {
     
     include 'connect.php';
 
+    if (move_uploaded_file($tempname, $folder)) {
+
+        
     $sql = "UPDATE customer_creation SET 
-        Customer_Name='$name', 
-        Gender='$gender', 
-        Date_of_join='$doj', 
-        Foundation='$foundation', 
-        Company_Name='$company_name', 
-        GST='$gst',
-        Category='$category', 
-        Unique_ID='$unique', 
-        Manager='$manager', 
-        `Union`='$union', 
-        Photo='$folder', 
-        Country='$country', 
-        `State`='$state', 
-        City='$city', 
-        Building_Number='$building_no', 
-        Street='$street',
-        Area='$area', 
-        Pincode='$pincode', 
-        Country_Pmt='$country_pmt', 
-        State_Pmt='$state_pmt', 
-        City_Pmt='$city_pmt', 
-        Building_Number_Pmt='$building_no_pmt', 
-        Street_Pmt='$street_pmt', 
-        Area_Pmt='$area_pmt', 
-        Pincode_Pmt='$pincode_pmt'
-        WHERE id = '$get_id'";
+    Customer_Name='$name', 
+    Gender='$gender', 
+    Date_of_join='$doj', 
+    Foundation='$foundation', 
+    Company_Name='$company_name', 
+    GST='$gst',
+    Category='$category', 
+    Unique_ID='$unique', 
+    Manager='$manager', 
+    `Union`='$union', 
+    
+    Photo='$folder', 
+    Country='$country', 
+    `State`='$state', 
+    City='$city', 
+    Building_Number='$building_no', 
+    Street='$street',
+    Area='$area', 
+    Pincode='$pincode', 
+    Country_Pmt='$country_pmt', 
+    State_Pmt='$state_pmt', 
+    City_Pmt='$city_pmt', 
+    Building_Number_Pmt='$building_no_pmt', 
+    Street_Pmt='$street_pmt', 
+    Area_Pmt='$area_pmt', 
+    Pincode_Pmt='$pincode_pmt'
+    WHERE id = '$get_id'";
 
 
+    }else{
+
+        
+    $sql = "UPDATE customer_creation SET 
+    Customer_Name='$name', 
+    Gender='$gender', 
+    Date_of_join='$doj', 
+    Foundation='$foundation', 
+    Company_Name='$company_name', 
+    GST='$gst',
+    Category='$category', 
+    Unique_ID='$unique', 
+    Manager='$manager', 
+    `Union`='$union', 
+    Country='$country', 
+    `State`='$state', 
+    City='$city', 
+    Building_Number='$building_no', 
+    Street='$street',
+    Area='$area', 
+    Pincode='$pincode', 
+    Country_Pmt='$country_pmt', 
+    State_Pmt='$state_pmt', 
+    City_Pmt='$city_pmt', 
+    Building_Number_Pmt='$building_no_pmt', 
+    Street_Pmt='$street_pmt', 
+    Area_Pmt='$area_pmt', 
+    Pincode_Pmt='$pincode_pmt'
+    WHERE id = '$get_id'";
+
+
+}
     // Execute query
     
     $result_is_done = $conn->query($sql);

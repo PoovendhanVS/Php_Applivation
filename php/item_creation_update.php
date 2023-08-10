@@ -55,8 +55,8 @@ $description = $row['Description'];
                             <textarea name="item_desc" class="form-control" id="item_desc" cols="10"
                                 rows="2"><?php echo $description ?></textarea>
                         </div>
-                        <a href="item_list.php" type="button" class="btn btn-info" style="width:100px; margin-left: 40%;">Clear</a>
-                        <button name="submit" class="btn btn-primary submit-btn" style="width:100px; margin-left: 0%;" onclick="FormValidation(event)">submit</button>
+                        <a href="item_list.php" type="button" class="btn btn-info" style="width:100px; margin-left: 40%;">Cancel</a>
+                        <button name="submit" class="btn btn-primary submit-btn" style="width:100px; margin-left: 0%;" onclick="FormValidation(event)">Update</button>
                     </div>
                 </div>
             </form>

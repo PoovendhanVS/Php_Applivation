@@ -83,9 +83,11 @@
         [10, 25, 50, -1],
         [10, 25, 50, 'All']
         ],
-        pagingType: 'full_numbers',
         processing: true,
         select: true,
+        search: {
+        return: true
+        },
         buttons: ['colvis'],
         initComplete: function () {
           // tata data can be click the data value to send the data from search box then appeare the required data
@@ -111,7 +113,21 @@
           });
         }
       });
-      
+      table.on('click', 'tbody tr', (e) => {
+    let classList = e.currentTarget.classList;
+ 
+    if (classList.contains('selected')) {
+        classList.remove('selected');
+    }
+    else {
+        table.rows('.selected').nodes().each((row) => row.classList.remove('selected'));
+        classList.add('selected');
+    }
+});
+ 
+document.querySelector('#button').addEventListener('click', function () {
+    table.row('.selected').remove().draw(false);
+});
       table.buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
     });
   </script>

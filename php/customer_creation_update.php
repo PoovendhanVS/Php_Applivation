@@ -222,7 +222,7 @@ $pincode_pmt  = $row['Pincode_Pmt'];
                                 <div class="form-items">
                                     <label class="photo" for="">Photo</label>
                                     <input type="file" accept="image/*" onchange="loadFile(event)" name="photo"
-                                        class="form-control" id="photo" value="" />
+                                        class="form-control" id="photo" value="<?php echo $folder ?>" />
                                 </div>
                                 <div class="show_photo" style="margin-left: 60%;"><img id="output" width="100" src="<?php echo $folder ?>"
                                         height="100"></div>
@@ -408,7 +408,7 @@ $pincode_pmt  = $row['Pincode_Pmt'];
                                     </div>
                                     <div class="button-section">
                                         <a href="master.php" class="btn btn-dark cancel">Cancel</a>
-                                        <button name="submit" class="btn btn-primary" onclick="validateForm(event)">Submit</button>
+                                        <button name="submit" class="btn btn-primary" onclick="validateForm(event)">Update</button>
                                     </div>
                                 </div>
                             </div>
@@ -509,6 +509,135 @@ $pincode_pmt  = $row['Pincode_Pmt'];
 //   });
 
   
+function validateForm(event) {
+    var gen = $("#gen").val();
+    var customer_name = $("#customer_name").val();
+    var doj = $("#doj").val();
+    var foundation = $("#foundation").val();
+    var company_name = $("#company_name").val();
+    var gst_number = $("#gst_number").val();
+    var category = $("#category").val();
+    var manager_name = $("#manager_name").val();
+    var union_name = $("#union_name").val();
+    var photo = $("#photo").val();
+
+    var country = $("#country").val();
+    var state = $("#state").val();
+    var city = $("#city").val();
+    var building_number = $("#building_number").val();
+    var street = $("#street").val();
+    var area = $("#area").val();
+    var pincode = $("#pincode").val();
+
+    var country_per = $("#country_per").val();
+    var state_per = $("#state_per").val();
+    var city_per = $("#city_per").val();
+    var building_number_per = $("#building_number_per").val();
+    var street_per = $("#street_per").val();
+    var area_per = $("#area_per").val();
+    var pincode_per = $("#pincode_per").val();
+
+
+    if (gen === '') {
+      alert('Please select a gender');
+      event.preventDefault();
+    }
+    else if (customer_name === '') {
+      alert('Please enter a customer name');
+      event.preventDefault();
+    }
+    else if (doj === "") {
+      alert("Please select a date of jioning.");
+      event.preventDefault();
+    }
+    else if (foundation === "") {
+      alert("Please enter foundation.");
+      event.preventDefault();
+    }
+    else if (company_name === "") {
+      alert("Please select a Company name.");
+      event.preventDefault();
+    }
+    else if (gst_number === "") {
+      alert("Please select an GST number.");
+      event.preventDefault();
+    }
+    else if (category === "") {
+      alert("Please select a category.");
+      event.preventDefault();
+    }
+    else if (manager_name === "") {
+      alert("Please select a manager name.");
+      event.preventDefault();
+    }
+    else if (union_name === '') {
+      alert("Please select a union name.");
+      event.preventDefault();
+    }
+
+    // Perform validation for each field
+    
+    else if (country === "") {
+      alert("Please select present country.");
+      event.preventDefault();
+    }
+    else if (state === "") {
+      alert("Please select present state.");
+      event.preventDefault();
+    }
+    else if (city === "") {
+      alert("Please select present district.");
+      event.preventDefault();
+    }
+    else if (building_number === "") {
+      alert("Please enter building number for present address.");
+      event.preventDefault();
+    }
+    else if (street === "") {
+      alert("Please enter street for present address.");
+      event.preventDefault();
+    }
+    else if (area === "") {
+      alert("Please enter area for present address.");
+      event.preventDefault();
+    }
+    else if (pincode === "") {
+      alert("Please enter pincode for present address.");
+      event.preventDefault();
+    }
+    // permanent address
+    else if (country_per === "") {
+      alert("Please select permanent country.");
+      event.preventDefault();
+    }
+    else if (state_per === "") {
+      alert("Please select permanent state.");
+      event.preventDefault();
+    }
+    else if (city_per === "") {
+      alert("Please select permanent district.");
+      event.preventDefault();
+    }
+    else if (building_number_per === "") {
+      alert("Please enter building number for permanent address.");
+      event.preventDefault();
+    }
+    else if (street_per === "") {
+      alert("Please enter street for permanent address.");
+      event.preventDefault();
+    }
+    else if (area_per === "") {
+      alert("Please enter area for permanent address.");
+      event.preventDefault();
+    }
+    else if (pincode_per === "") {
+      alert("Please enter pincode for permanent address.");
+      event.preventDefault();
+    }
+    else {
+      alert('Customer details stored successfully.')
+    }
+  }
   function sameAddress() {
     if (document.getElementById(
       "same").checked) {

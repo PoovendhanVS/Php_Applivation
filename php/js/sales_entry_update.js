@@ -1,3 +1,46 @@
+
+    // function onSubmisstion(event){
+    //     var invoice = document.getElementById('invoice').value;
+        
+    //     // Clear the input fields
+    //     document.getElementById('item_type').value = '';
+    //     document.getElementById('item_code').value = '';
+    //     document.getElementById('item_rate').value = '';
+    //     document.getElementById('item_qty').value = '';
+    //     document.getElementById('total').value = '';
+    //     alert('Invoice Details stored successfully, Invoice ID: ' + invoice)
+    // }
+// function onSubmisstion(event){
+//     var name = document.getElementById('emp_name').value;
+//     var type = document.getElementById('item_type').value;
+//     var code = document.getElementById('item_code').value;
+//     var rate = document.getElementById('item_rate').value;
+//     var qty = document.getElementById('item_qty').value;
+//     if (name == ''){
+//         alert('Customer name is required');
+//         event.preventDefault();
+//     }
+//     else if (type == ''){
+//         alert('Item type is required');
+//         event.preventDefault();
+//     }
+//     else if (type == ''){
+//         alert('Item code is required');
+//         event.preventDefault();
+//     }
+//     else if (type == ''){
+//         alert('Item rate is required');
+//         event.preventDefault();
+//     }
+//     else if (type == ''){
+//         alert('Item quantity is required');
+//         event.preventDefault();
+//     }
+//     else{
+//         return 0;
+//     }
+// }
+
 $(document).ready(function () {
     $('#submit-button').on('click', item_submit);
 });
@@ -42,8 +85,6 @@ function item_submit(event) {
         });
     }
 }
-
-
 
 function disableSelect(selectElement) {
     selectElement.disabled = true;
@@ -228,6 +269,50 @@ function deleteItem(id) {
     });
 }
 
+$(document).ready(function () {
+    var selectedId = $('#customer_name').val();
+    if (selectedId !== '') {
+        updateList(selectedId);
+    } else {
+        resetFields();
+    }
+
+    function updateList(selectedId) {
+        // Make an AJAX request to fetch the corresponding data
+        $.ajax({
+            url: 'sales_entry_fetch_name_dte.php',
+            type: 'GET',
+            data: {
+                'selectedId': selectedId
+            },
+            success: function (response) {
+                $('#company_name').val(response.company_name);
+                $('#gst_number').val(response.gst);
+                
+                var concateaddress = 
+                    response.building_number + ', '+
+                    response.street + ', '+
+                    response.area + ', '+
+                    response.city + ', '+
+                    response.state + ', '+
+                    response.country + ', '+
+                    response.pincode;
+                
+                $('#address').val(concateaddress);
+            },
+            error: function (xhr, errmsg, err) {
+                console.log(errmsg);
+            }
+        });
+    }
+
+    function resetFields() {
+        $('#company_name').val('');
+        $('#gst_number').val('');
+        $('#address').val('');
+    }
+});
+
 
 $(document).ready(function () {
     $('#customer_name').change(function () {
@@ -323,3 +408,35 @@ $(document).ready(function () {
         var total = isNaN(itemRate) || isNaN(itemQty) ? '' : (itemRate * itemQty).toFixed(2);
         document.getElementById('total').value = total;
     }
+
+
+
+    $(document).ready(function() {
+        var invoice_id = $('#invoice').val();
+        if (invoice_id != '') {
+            // Create an object to hold the form data
+            var formData = {
+                invoice_id: invoice_id,
+            };
+    
+            // Make an AJAX request to the backend endpoint
+            $.ajax({
+                url: 'sales_entry_bill_table.php',
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    // Handle the successful response here
+                    // Update the HTML of a specific element with the table HTML
+                    if (response) {
+                        $('#table-body').html(response.table_rows);
+                        console.log('Success Inserted Table');
+                    } else {
+                        console.log('Fail table');
+                    }
+                },
+                error: function(error) {
+                    // Handle any errors that occur during the request
+                }
+            });
+        }
+    });

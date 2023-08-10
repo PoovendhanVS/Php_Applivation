@@ -5,7 +5,7 @@
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
       // Start the table structure outside the loop
-      echo "<table id='example' class='table table-striped mdl-data-tabl row-border'' style='width:100%; font-size:14px;'>
+      echo "<table id='example' class='table table-striped table-bordered' style='width:100%; font-size:14px;'>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -53,7 +53,7 @@
         <td>" . $row['Unique_ID'] . "</td>
         <td>" . $address . '.' . "</td>
 
-        <td style='text-align:center;'>" .  "<a target='_blank' href='". $row['Photo'] ."'><img style='width:25px;height:25px;text-align:center;' src='" . $row['Photo'] . "'></a>" . "</td>
+        <td  class='popup' style='text-align:center;'>" .  "<a ><img style='width:25px;height:25px;text-align:center;' src='" . $row['Photo'] . "'></a>" . "</td>
 
         <td>
         <a class='button-look-view' title='view' href='customer_creation_view.php?id=" . $row['id'] . "'>

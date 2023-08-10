@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $itemRate = $_POST['item_rate'];
     $itemQty = $_POST['item_qty'];
     $total = $_POST['total'];
-
     
     $sql = "INSERT INTO sales_order 
     (
@@ -49,16 +48,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $table_rows .= "<tr>
                     <td>" . $count . "</td>
                     <td>" . $row['Invoice_Number'] . "</td>
-                    <td style='width:200px;'>" . $row['Item_Type'] . "</td>
+                    <td>" . $row['Item_Type'] . "</td>
                     <td>" . $row['Item_Code'] . "</td>
                     <td>" . $row['Item_Rate'] . "</td>
                     <td>" . $row['Quantity'] . "</td>
                     <td>" . $row['Total'] . "</td>
-                    <td style='width:200px'>
+                    <td>
                     <a class='button-look-edit' title='edit' onclick='UpdateItem($last_id)'>
                     <img src='img/edit.png' width='20px'></a>
-                    <a class='button-look-del' title='delete'  onclick='confirmDelete()' >
-                    <img src='img/delete.png' width='20px'></a>
+                    <a class='button-look-del' title='delete'  onclick='confirmDelete($last_id)' >
+                        <img src='img/delete.png' width='20px'>
                     </td>
                 </tr>";
                 $count++;

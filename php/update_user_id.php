@@ -117,6 +117,9 @@ span.psw {
 
     <div class="formcontainer">
       <div class="container">
+  <center>
+      <h1 class="heading" style="color: #4286f4;">UPDATE SIGN UP</h1>
+    </center>
         <label for="uname"><strong>Username</strong></label>
         <input type="text" placeholder="Enter Username" name="uname" id="user_name" value="<?php echo $name ?>">
         <label for="mail"><strong>E-mail</strong></label>
@@ -124,7 +127,7 @@ span.psw {
         <label for="psw"><strong>Password</strong></label>
         <input type="password" placeholder="Enter Password" name="psw" id="user_pwd" value="<?php echo $pwd ?>">
       </div>
-      <button type="submit" name="submit"><strong>SIGN UP</strong></button>
+      <button type="submit" name="submit"><strong>UPDATE</strong></button>
     </div>
   </form>
 

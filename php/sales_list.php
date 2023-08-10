@@ -40,6 +40,7 @@
       <a href="sales_entry.php"><button class="btn btn-success" style="float:right">Add</button></a>
       <h3>SALES ENTRY LISTS</h3>
     </center>
+    <p><button id="button">Row count</button></p>
     <?php
     include 'sales_list_link.php';
     ?>
@@ -68,13 +69,37 @@
   <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
-  <script>
-    function confirmDelete(id) {
-        var result = confirm("Are you sure you want to delete this ID: " + id + "?");
-        if (result) {
-            window.location.href = "item_creation_delete_id.php?id=" + id;
-        }
+  <script>function confirmDelete(itemId) {
+    var confirmResult = confirm("Are you sure you want to delete this invoice id?");
+    if (confirmResult) {
+        deleteItem(itemId);
     }
+}
+
+function deleteItem(id) {
+    var ids = id;
+    $.ajax({
+        url: 'sales_entry_list_delete.php',
+        type: 'POST',
+        data: {
+            'ids': ids,
+        },
+        dataType: 'json', // Expect JSON response
+        success: function(response) {
+            if (response.success) {
+                alert('Invoice deleted successfully');
+                window.location.href = 'sales_list.php';
+            } else {
+                alert('Deletion failed');
+            }
+        },
+        error: function(error) {
+            // Handle any errors that occur during the request
+            alert('Error');
+        }
+    });
+}
+
 
       $(document).ready(function () {
       var table = $('#example').DataTable({
@@ -82,10 +107,12 @@
         lengthMenu: [
         [10, 25, 50, -1],
         [10, 25, 50, 'All']
-        ],
-        pagingType: 'full_numbers',
+        ],  
         processing: true,
         select: true,
+        search: {
+        return: true
+        },
         buttons: ['colvis'],
         initComplete: function () {
           // tata data can be click the data value to send the data from search box then appeare the required data
@@ -111,7 +138,13 @@
           });
         }
       });
-      
+      table.on('click', 'tbody tr', function (e) {
+    e.currentTarget.classList.toggle('selected');
+});
+ 
+document.querySelector('#button').addEventListener('click', function () {
+    alert(table.rows('.selected').data().length + ' row(s) selected');
+});
       table.buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
     });
   </script>

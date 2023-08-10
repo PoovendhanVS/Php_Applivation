@@ -6,7 +6,7 @@
 
     if ($result->num_rows > 0) {
       // Start the table structure outside the loop
-      echo "<table id='example' class='table table-striped mdl-data-tabl row-border' style='width:100%'>
+      echo "<table id='example' class='table table-striped mdl-data-tabl row-border cell-border' style='width:100%'>
             <thead>
                 <tr>
                     <th>ID</th>

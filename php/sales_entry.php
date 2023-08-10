@@ -52,6 +52,7 @@
 
 <body>
 <?php include 'html/nav-bar.html' ?>
+
 <?php
 function get_last_invoice_number() {
     $filename = 'last_invoice_number.txt';
@@ -89,7 +90,7 @@ function invoice_num($pad_len = 3, $prefix = null) {
 $invoice_id = invoice_num(3, "SAI-");
 
 ?>
-<form id="myForm" action="sales_entry_submit.php" method="POST" enctype="multipart/form-data" autocomplete="off">
+<form id="myForm" action=""  onsubmit="item_submit(event)" method="POST" enctype="multipart/form-data" autocomplete="off">
         <div class="container-fluid">
             <div class="main-form">
                 <h4 class="sub_title" style="color: dodgerblue; text-align:center; text-decoration:underline;">SALES ENTRY</h4>
@@ -229,10 +230,10 @@ $invoice_id = invoice_num(3, "SAI-");
     <div class="container-fluid" id="content">
             <table id="example" style="width:100%;" class="table table-striped table-bordered">
                 <thead>
-                    <tr class="text-center">
+                    <tr>
                         <th>S.No</th>
                         <th>Invoice ID</th>
-                        <th>Item Type</th>
+                        <th style='width:200px'>Item Type</th>
                         <th>Item Code</th>
                         <th>Item Rate</th>
                         <th>Qty</th>
@@ -241,49 +242,15 @@ $invoice_id = invoice_num(3, "SAI-");
                     </tr>
                 </thead>
                 <tbody id="table-body">
-                            
-                    
-                <?php /*
-                    $count = 1;
-    $sql_view = "SELECT * FROM sales_order";
-    $result_to_table = $conn->query($sql_view);
-    
-    if ($result_to_table->num_rows > 0) {
-        // If there are rows returned from the query
-        while ($row = $result_to_table->fetch_assoc()) {
-            $last_id = $row['id'];
-            echo "<tr>
-                <td>" . $count . "</td>
-                <td>" . $row['Invoice_Number'] . "</td>
-                <td>" . $row['Item_Type'] . "</td>
-                <td>" . $row['Item_Code'] . "</td>
-                <td>" . $row['Item_Rate'] . "</td>
-                <td>" . $row['Quantity'] . "</td>
-                <td>" . $row['Total'] . "</td>
-                <td style='width:200px'>
-                <a class='button-look-edit' title='edit' href='UpdateItem($last_id)'>
-                <img src='img/edit.png' width='20px'></a>
-                <a class='button-look-del' title='delete'  onclick='confirmDelete($user_id)' >
-                <img src='img/delete.png' width='20px'></a>
-                </td>
-            </tr>";
-            $count++;
-        }
-    } else {
-        // Handle the case when no rows are returned from the query
-        // For example, display a message that no data is available.
-        echo "<tr><td colspan='8'>No data available.</td></tr>";
-    } */
-    ?>
-
-
                 </tbody>
             </table>
             <p></p>
-            <button class="btn btn-primary" style="margin-left:1% ;float: right;width:100px;" name="submit" onclick="onSubmisstion(event)">Submit</button>
-        <a href="/sales_home" type="button" class="btn btn-info" style="float:right; width:100px;">Cancel</a>
+            <button class="btn btn-primary" style="margin-left:1% ;float: right;width:100px;">Submit</button>
+        <a href="sales_list.php" type="button" class="btn btn-info" style="float:right; width:100px;">Cancel</a>
     </div>
 </form>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

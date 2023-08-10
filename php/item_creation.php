@@ -43,7 +43,7 @@
                             <label for="" class="textarea-lable">Description</label>
                             <textarea name="item_desc" class="form-control" id="item_desc" cols="10"
                                 rows="2"></textarea>
-                                <a href="item_list.php" type="button" class="btn btn-info" style="width:100px; margin-left: 40%;">Clear</a>
+                                <a href="item_list.php" type="button" class="btn btn-info" style="width:100px; margin-left: 40%;">Cancel</a>
                                 <button name="submit" class="btn btn-primary submit-btn" style="width:100px; margin-left: 0%;" onclick="FormValidation(event)">submit</button>
                         </div>
                     </div>
